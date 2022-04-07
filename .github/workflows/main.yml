@@ -43,3 +43,14 @@ jobs:
         run: ssh -T ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
       - name: Mount containers
         run: sudo docker-compose up -d
+      - name: Build the stack
+        run: docker-compose up --build -d
+      - name: Get test result
+        run: |
+          # wait for the test results, and terminate with 
+          # a non-zero exit code if they are bad
+      - name: Stop containers
+        # the containers should be stopped regardless of 
+        # the test result
+        if: always()
+        run: docker-compose down
