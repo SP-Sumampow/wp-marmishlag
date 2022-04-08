@@ -1,9 +1,8 @@
-version: '3.4'
+version: '3.1'
 
 services:
     wp_php:
         build:
-            network: host
             context: .
             dockerfile: Dockerfile
         ports:
@@ -15,10 +14,6 @@ services:
     wp_db: 
         image: 'mariadb'
         restart: always
-        build:
-            network: host
-            context: .
-            dockerfile: Dockerfile
         environment: 
         # user= root
             MYSQL_DATABASE: data
@@ -28,10 +23,6 @@ services:
 
     wp_pma:
         image: phpmyadmin
-        build:
-            network: host
-            context: .
-            dockerfile: Dockerfile
         restart: always
         ports:
             - '8080:80'
