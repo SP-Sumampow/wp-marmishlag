@@ -1,6 +1,8 @@
 version: '3.1'
 
 services:
+    build:
+      network: host
     wp_php:
         build:
             context: .
@@ -28,5 +30,3 @@ services:
             - '8080:80'
         environment:
             - PMA_ARBITRARY=1
-build:
-    network: host
